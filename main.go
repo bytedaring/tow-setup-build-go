@@ -6,12 +6,19 @@ import (
 	"io"
 	"net"
 	"net/http"
-	"os"
+	// "os"
 	"time"
 )
 
-func main() {
+func main(){
 	targetURL := "https://ark.cn-beijing.volces.com"
+	testURL(targetURL)
+
+	targetURL = "https://baidu.com"
+	testURL(targetURL)
+}
+
+func testURL(targetURL string) {
 	fmt.Printf("Attempting to connect to %s ...\n", targetURL)
 
 	// 1. 克隆默认的 http.Transport 以继承其所有优化设置
@@ -44,7 +51,8 @@ func main() {
 	resp, err := client.Get(targetURL)
 	if err != nil {
 		fmt.Printf("Error: Request failed: %v\n", err)
-		os.Exit(1) // 以失败状态码退出
+		// os.Exit(1) // 以失败状态码退出
+		return
 	}
 	defer resp.Body.Close()
 
