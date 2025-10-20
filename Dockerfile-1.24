@@ -1,0 +1,7 @@
+FROM scratch
+
+WORKDIR /app
+# 这里的 main_common_logic 必须是您 Jenkins 脚本里 go build -o 之后的文件名
+COPY ./test_cert /app/
+
+CMD ["./test_cert"]
